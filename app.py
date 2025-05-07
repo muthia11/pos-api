@@ -26,5 +26,5 @@ if st.button("Cek POS Terdekat") or auto_run:
     top3 = df.sort_values("distance_km").head(3)
 
     st.subheader("Top 3 POS Terdekat:")
-    st.table(top3[["name", "lat", "lon", "distance_km"]])
+    st.table(top3[["POS Name", "lat", "lon", "distance_km"]])
 
