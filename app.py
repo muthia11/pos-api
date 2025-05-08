@@ -7,13 +7,6 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
-st.markdown("""
-    <style>
-        iframe[title="folium"] {
-            height: 400px !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 # ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
 st.markdown("""
@@ -114,18 +107,18 @@ if lat and lon:
             """, unsafe_allow_html=True)
 
     # Peta
-    st.subheader("🗺️ Lokasi di Peta")
-    m = folium.Map(location=[lat, lon], zoom_start=13)
-    folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
-    for _, row in top3.iterrows():
-        folium.Marker(
-            location=[row["lat"], row["lon"]],
-            popup=row["POS Name"],
-            icon=folium.Icon(color="red")
-        ).add_to(m)
-    st_folium(m, width=700, height=500)
-else:
-    st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
+#     st.subheader("🗺️ Lokasi di Peta")
+#     m = folium.Map(location=[lat, lon], zoom_start=13)
+#     folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
+#     for _, row in top3.iterrows():
+#         folium.Marker(
+#             location=[row["lat"], row["lon"]],
+#             popup=row["POS Name"],
+#             icon=folium.Icon(color="red")
+#         ).add_to(m)
+#     st_folium(m, width=700, height=500)
+# else:
+#     st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
 
 # ====== FOOTER ======
 st.markdown("""
