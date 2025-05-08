@@ -154,13 +154,6 @@ st.markdown("""
         <h4 style="margin-bottom: 10px;">Customer Care</h4>
         <p style="font-size: 22px; font-weight: bold;">1500018</p>
 
-        <h4 style="margin-top: 30px;">Media Sosial</h4>
-        <p style="font-size: 16px;">
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
-          <a href="#" style="color:white; text-decoration:none;">TikTok</a>
-        </p>
       </div>
     </div>
 
