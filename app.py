@@ -2,23 +2,14 @@ import streamlit as st
 import pandas as pd
 import requests
 from geopy.distance import geodesic
+import folium
+from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
-# ==== CSS STYLING ====
+# ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
 st.markdown("""
     <style>
-        /* Full width layout */
-        .main .block-container {
-            padding-left: 0rem !important;
-            padding-right: 0rem !important;
-            padding-bottom: 0rem !important;
-        }
-        .full-width {
-            width: 100vw;
-            margin-left: -1.5rem;
-            margin-right: -1.5rem;
-        }
         html, body {
             background-color: white !important;
             margin: 0 !important;
@@ -28,8 +19,18 @@ st.markdown("""
         .stApp {
             background-color: white !important;
         }
-        footer, header {
-            visibility: hidden;
+        .block-container {
+            padding-top: 1rem !important;
+            padding-bottom: 0rem !important;
+        }
+        footer, header {visibility: hidden;}
+        .element-container:has(.folium-map) {
+            background-color: white !important;
+            padding: 0px !important;
+            margin: 0px !important;
+        }
+        iframe {
+            margin-bottom: 0px !important;
         }
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
@@ -41,23 +42,25 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ==== LOGO & JUDUL ====
+# Logo dan Judul
 st.markdown("""
     <div style='text-align:center; margin-bottom: 10px;'>
         <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png' width='120'/>
     </div>
 """, unsafe_allow_html=True)
-st.markdown("<h2 style='text-align:center; color:#005BAC;'>POS BFI Finance – Temui Kami Lebih Dekat</h2>", unsafe_allow_html=True)
 
-# ==== INPUT ALAMAT ====
+st.markdown("<h2 style='text-align:center; color:#005BAC;'>📍 POS BFI Finance – Temui Kami Lebih Dekat</h2>", unsafe_allow_html=True)
+
+# Input alamat
 st.markdown("Masukkan alamat Anda")
 alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
 
-# ==== COORDINATE HANDLING ====
+# Query param fallback
 query_params = st.query_params
 lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
 lat = lon = None
 
+# Geocoding
 def get_coordinates_from_address(alamat):
     url = "https://nominatim.openstreetmap.org/search"
     params = {"q": alamat, "format": "json", "limit": 1}
@@ -67,13 +70,13 @@ def get_coordinates_from_address(alamat):
         return float(response[0]['lat']), float(response[0]['lon'])
     return None, None
 
+# Hitung lokasi terdekat
 if alamat_input:
     lat, lon = get_coordinates_from_address(alamat_input)
 elif lat_param and lon_param:
     lat = float(lat_param)
     lon = float(lon_param)
 
-# ==== TAMPILKAN 3 POS TERDEKAT ====
 if lat and lon:
     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
     user_loc = (lat, lon)
@@ -102,34 +105,52 @@ if lat and lon:
                 </div>
             """, unsafe_allow_html=True)
 
-# ==== FOOTER ====
-# ==== FOOTER ====
+    # Peta
+    st.subheader("🗺️ Lokasi di Peta")
+    m = folium.Map(location=[lat, lon], zoom_start=13)
+    folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
+    for _, row in top3.iterrows():
+        folium.Marker(
+            location=[row["lat"], row["lon"]],
+            popup=row["POS Name"],
+            icon=folium.Icon(color="red")
+        ).add_to(m)
+    st_folium(m, width=700, height=500)
+else:
+    st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
+
+# ====== FOOTER ======
 st.markdown("""
-<div style="background-color: #005BAC; color: white; padding: 30px 20px 15px; border-radius: 0px;">
+<hr style='margin-top:50px;'/>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    
-    <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
-      <h4 style="margin-bottom: 8px;">PT BFI Finance Indonesia Tbk</h4>
-      <p style="margin:0;">BFI Tower</p>
-      <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
-      <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
-      <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
-      <p style="margin-top:10px;">📞 +62 21 2965 0300, 2965 0500</p>
-      <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
-    </div>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
 
-    <div style="flex: 1; min-width: 250px; margin-bottom: 15px;">
-      <h4 style="margin-bottom: 8px;">Customer Care</h4>
-      <p style="font-size: 24px; font-weight: bold; margin:0;">1500018</p>
-    </div>
-
+  <div style="flex: 1; min-width: 250px; margin-right: 40px;">
+    <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
+    <p style="margin:0;">BFI Tower</p>
+    <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
+    <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
+    <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
+    <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
+    <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
   </div>
 
-  <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #f1f1f1;">
-    BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
+  <div style="flex: 1; min-width: 250px;">
+    <h4 style="margin-bottom: 10px;">Customer Care</h4>
+    <p style="font-size: 22px; font-weight: bold;">1500018</p>
+    
+    <h4 style="margin-top: 30px;">Media Sosial</h4>
+    <p style="font-size: 16px;">
+      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
+      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
+      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
+      <a href="#" style="color:white; text-decoration:none;">TikTok</a>
+    </p>
   </div>
 
 </div>
-""", unsafe_allow_html=True)
 
+<p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
+  BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
+</p>
+""", unsafe_allow_html=True)
