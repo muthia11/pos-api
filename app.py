@@ -52,7 +52,7 @@ st.markdown("""
 st.markdown("""
 <div style='text-align: center; color: #005BAC; line-height: 1.3;'>
   <h2 style='margin-bottom: 0; font-weight: bold;'>POS BFI Finance</h2>
-  <p style='font-size: 16px; margin-top: 4px;'>Temui Kami Lebih Dekat</p>
+  <p style='font-size: 25px; margin-top: 4px;'>Temui Kami Lebih Dekat</p>
 </div>
 """, unsafe_allow_html=True)
 
