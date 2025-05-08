@@ -10,21 +10,19 @@ st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
     header {visibility: hidden;}
-    </style>
-""", unsafe_allow_html=True)
-st.markdown("""
-    <style>
-    body {
-        overflow-x: hidden !important;
+    footer {visibility: hidden;}
+    html, body {
         background-color: white !important;
+        overflow-x: hidden;
     }
-    #MainMenu, footer, header {
-        visibility: hidden;
+    input::placeholder {
+        color: #666 !important;
+        opacity: 1 !important;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 
 # ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
