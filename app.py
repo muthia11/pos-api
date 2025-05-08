@@ -7,6 +7,15 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
+
 # ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
 st.markdown("""
     <style>
