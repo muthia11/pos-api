@@ -49,11 +49,26 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<h2 style='text-align:center; color:#005BAC;'>POS BFI Finance – Temui Kami Lebih Dekat</h2>", unsafe_allow_html=True)
+st.markdown("""
+<div style='text-align: center; color: #005BAC; line-height: 1.3;'>
+  <h2 style='margin-bottom: 0; font-weight: bold;'>POS BFI Finance</h2>
+  <p style='font-size: 16px; margin-top: 4px;'>Temui Kami Lebih Dekat</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Input alamat
 st.markdown("Masukkan alamat Anda")
 alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
+
+# CSS tambahan untuk placeholder
+st.markdown("""
+    <style>
+    input::placeholder {
+        color: #666 !important;  /* atau pakai #000 untuk hitam */
+        opacity: 1 !important;   /* pastikan tidak transparan */
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Query param fallback
 query_params = st.query_params
