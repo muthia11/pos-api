@@ -8,6 +8,16 @@ from streamlit_folium import st_folium
 # Konfigurasi dasar
 st.set_page_config(page_title="POS Terdekat BFI", layout="centered")
 
+# Paksa background putih untuk seluruh halaman
+st.markdown("""
+    <style>
+        .stApp {
+            background-color: white !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # CSS styling agar tampilan bersih dan tetap terlihat di semua mode
 st.markdown("""
     <style>
