@@ -115,9 +115,11 @@ st.markdown("""
         <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
         <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
       </div>
+
       <div style="flex: 1; min-width: 250px;">
         <h4 style="margin-bottom: 10px;">Customer Care</h4>
         <p style="font-size: 22px; font-weight: bold;">1500018</p>
+
         <h4 style="margin-top: 30px;">Media Sosial</h4>
         <p style="font-size: 16px;">
           <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
@@ -127,8 +129,10 @@ st.markdown("""
         </p>
       </div>
     </div>
+
     <p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
       BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
     </p>
 </div>
 """, unsafe_allow_html=True)
+
