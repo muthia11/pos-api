@@ -122,9 +122,9 @@ if lat and lon:
 
 # ====== FOOTER ======
 st.markdown("""
-<hr style='margin-top:50px;'/>
+<div style="width: 100vw; margin-left: -1.5rem; margin-right: -1.5rem; background-color:#005BAC; color:white; padding: 20px 24px 12px; box-sizing: border-box;">
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
+  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1100px; margin: auto;">
 
     <div style="flex: 1; min-width: 250px; margin-right: 20px;">
       <h4 style="margin-bottom: 6px; font-size: 16px;">PT BFI Finance Indonesia Tbk</h4>
@@ -141,9 +141,11 @@ st.markdown("""
       <p style="font-size: 20px; font-weight: bold; margin: 0;">1500018</p>
     </div>
 
-</div>
+  </div>
 
-<p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
-  BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
-</p>
+  <p style="text-align:center; margin-top: 12px; font-size: 12px; color: #e0e0e0;">
+    BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
+  </p>
+
+</div>
 """, unsafe_allow_html=True)
