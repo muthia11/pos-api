@@ -106,18 +106,19 @@ if lat and lon:
             """, unsafe_allow_html=True)
 
     # Peta
-    st.subheader("🗺️ Lokasi di Peta")
-    m = folium.Map(location=[lat, lon], zoom_start=13)
-    folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
-    for _, row in top3.iterrows():
-        folium.Marker(
-            location=[row["lat"], row["lon"]],
-            popup=row["POS Name"],
-            icon=folium.Icon(color="red")
-        ).add_to(m)
-    st_folium(m, width=700, height=500)
-else:
-    st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
+#     st.subheader("🗺️ Lokasi di Peta")
+#     m = folium.Map(location=[lat, lon], zoom_start=13)
+#     folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
+#     for _, row in top3.iterrows():
+#         folium.Marker(
+#             location=[row["lat"], row["lon"]],
+#             popup=row["POS Name"],
+#             icon=folium.Icon(color="red")
+#         ).add_to(m)
+#     st_folium(m, width=700, height=500)
+# else:
+#     st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
+
 
 # ====== FOOTER ======
 st.markdown("""
@@ -138,14 +139,6 @@ st.markdown("""
   <div style="flex: 1; min-width: 250px;">
     <h4 style="margin-bottom: 10px;">Customer Care</h4>
     <p style="font-size: 22px; font-weight: bold;">1500018</p>
-    
-    <h4 style="margin-top: 30px;">Media Sosial</h4>
-    <p style="font-size: 16px;">
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
-      <a href="#" style="color:white; text-decoration:none;">TikTok</a>
-    </p>
   </div>
 
 </div>
@@ -154,3 +147,4 @@ st.markdown("""
   BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
 </p>
 """, unsafe_allow_html=True)
+
