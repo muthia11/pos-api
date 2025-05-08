@@ -14,6 +14,17 @@ st.markdown("""
     header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    body {
+        overflow-x: hidden !important;
+        background-color: white !important;
+    }
+    #MainMenu, footer, header {
+        visibility: hidden;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 
 # ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
