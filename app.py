@@ -122,7 +122,7 @@ if lat and lon:
 
 st.markdown(
     """
-    <div style="position: relative; left: 0; right: 0; width: 100vw; margin: 0 -3rem; background-color:#005BAC; color:white; padding: 30px 40px 20px; box-sizing: border-box;">
+    <div style="position: relative; left: 0; right: 0; width: 100vw; margin: 0 -5rem; background-color:#005BAC; color:white; padding: 30px 40px 20px; box-sizing: border-box;">
       <div style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: auto;">
         <div style="flex: 1; min-width: 250px; margin-right: 40px;">
           <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
