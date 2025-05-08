@@ -120,8 +120,7 @@ if lat and lon:
 #     st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
 
 
-
-# ====== FOOTER FULL WIDTH FIXED ======
+# ====== FOOTER FULL WIDTH ======
 st.markdown("""
 <div style="width: 100vw; margin-left: -1.5rem; margin-right: -1.5rem; background-color:#005BAC; color:white; padding: 30px 40px 20px; box-sizing: border-box;">
 
@@ -150,5 +149,6 @@ st.markdown("""
 
 </div>
 """, unsafe_allow_html=True)
+
 
 
