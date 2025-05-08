@@ -12,6 +12,10 @@ st.markdown("""
     <style>
         .stApp { background-color: white !important; }
         html, body, [class*="css"] { font-family: 'Segoe UI', sans-serif; }
+        input[type="text"] {
+            background-color: white !important;
+            color: black !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -65,11 +69,11 @@ if lat and lon:
                         <div style="margin-top:10px;">
                             <a href="https://wa.me/{row['whatsapp']}" target="_blank"
                                style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
-                                      text-decoration:none; margin-right:8px; font-size:13px;">Hubungi Cabang</a>
+                                      text-decoration:none; font-size:13px; display:inline-block; margin-bottom:5px;">Hubungi Cabang</a><br>
                             <a href="https://www.google.com/maps/dir/?api=1&destination={row['lat']},{row['lon']}" 
                                target="_blank"
                                style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
-                                      text-decoration:none; font-size:13px;">Petunjuk Arah</a>
+                                      text-decoration:none; font-size:13px; display:inline-block;">Arahkan</a>
                         </div>
                     </div>
                 """, unsafe_allow_html=True)
@@ -85,11 +89,11 @@ if lat and lon:
                     <div style="margin-top:10px;">
                         <a href="https://wa.me/{row['whatsapp']}" target="_blank"
                            style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
-                                  text-decoration:none; margin-right:8px; font-size:13px;">Hubungi Cabang</a>
+                                  text-decoration:none; font-size:13px; display:inline-block; margin-bottom:5px;">Hubungi Cabang</a><br>
                         <a href="https://www.google.com/maps/dir/?api=1&destination={row['lat']},{row['lon']}" 
                            target="_blank"
                            style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
-                                  text-decoration:none; font-size:13px;">Petunjuk Arah</a>
+                                  text-decoration:none; font-size:13px; display:inline-block;">Arahkan</a>
                     </div>
                 </div>
             """, unsafe_allow_html=True)
