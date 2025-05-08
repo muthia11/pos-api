@@ -121,32 +121,29 @@ if lat and lon:
 
 
 # ====== FOOTER ======
-# ====== FOOTER ======
 st.markdown("""
-<div style="width: 100vw; margin-left: -1.5rem; margin-right: -1.5rem; background-color:#005BAC; color:white; padding: 20px 24px 12px; box-sizing: border-box;">
+<hr style='margin-top:50px;'/>
 
-  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1100px; margin: auto;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
 
-    <div style="flex: 1; min-width: 250px; margin-right: 20px;">
-      <h4 style="margin-bottom: 6px; font-size: 16px;">PT BFI Finance Indonesia Tbk</h4>
-      <p style="margin:0; font-size:13px;">BFI Tower</p>
-      <p style="margin:0; font-size:13px;">Sunburst CBD Lot. 1.2</p>
-      <p style="margin:0; font-size:13px;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
-      <p style="margin:0; font-size:13px;">BSD City - Tangerang Selatan 15322</p>
-      <p style="margin:10px 0 0; font-size:13px;">📞 +62 21 2965 0300, 2965 0500</p>
-      <p style="margin:0; font-size:13px;">📠 +62 21 2965 0757, 2965 0758</p>
-    </div>
-
-    <div style="flex: 1; min-width: 250px;">
-      <h4 style="margin-bottom: 6px; font-size: 16px;">Customer Care</h4>
-      <p style="font-size: 20px; font-weight: bold; margin: 0;">1500018</p>
-    </div>
-
+  <div style="flex: 1; min-width: 250px; margin-right: 40px;">
+    <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
+    <p style="margin:0;">BFI Tower</p>
+    <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
+    <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
+    <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
+    <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
+    <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
   </div>
 
-  <p style="text-align:center; margin-top: 12px; font-size: 12px; color: #e0e0e0;">
-    BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
-  </p>
+  <div style="flex: 1; min-width: 250px;">
+    <h4 style="margin-bottom: 10px;">Customer Care</h4>
+    <p style="font-size: 22px; font-weight: bold;">1500018</p>
+  </div>
 
 </div>
+
+<p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
+  BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
+</p>
 """, unsafe_allow_html=True)
