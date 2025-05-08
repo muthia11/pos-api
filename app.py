@@ -7,6 +7,21 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
+st.markdown("""
+    <style>
+        /* Override block container layout to allow full-width sections */
+        .main .block-container {
+            padding-left: 0rem !important;
+            padding-right: 0rem !important;
+        }
+
+        .full-width {
+            width: 100vw;
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
 st.markdown("""
@@ -122,36 +137,36 @@ if lat and lon:
 
 # ====== FOOTER ======
 st.markdown("""
-<hr style='margin-top:50px;'/>
+<div class="full-width">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
+      <div style="flex: 1; min-width: 250px; margin-right: 40px;">
+        <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
+        <p style="margin:0;">BFI Tower</p>
+        <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
+        <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
+        <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
+        <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
+        <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
+      </div>
 
-  <div style="flex: 1; min-width: 250px; margin-right: 40px;">
-    <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
-    <p style="margin:0;">BFI Tower</p>
-    <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
-    <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
-    <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
-    <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
-    <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
-  </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h4 style="margin-bottom: 10px;">Customer Care</h4>
+        <p style="font-size: 22px; font-weight: bold;">1500018</p>
 
-  <div style="flex: 1; min-width: 250px;">
-    <h4 style="margin-bottom: 10px;">Customer Care</h4>
-    <p style="font-size: 22px; font-weight: bold;">1500018</p>
-    
-    <h4 style="margin-top: 30px;">Media Sosial</h4>
-    <p style="font-size: 16px;">
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
-      <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
-      <a href="#" style="color:white; text-decoration:none;">TikTok</a>
+        <h4 style="margin-top: 30px;">Media Sosial</h4>
+        <p style="font-size: 16px;">
+          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
+          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
+          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
+          <a href="#" style="color:white; text-decoration:none;">TikTok</a>
+        </p>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
+      BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
     </p>
-  </div>
-
 </div>
-
-<p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
-  BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
-</p>
 """, unsafe_allow_html=True)
+
