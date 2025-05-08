@@ -106,6 +106,7 @@ if lat and lon:
 st.markdown("""
 <div class="full-width">
     <div style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color:#005BAC; color:white; padding: 30px 20px; border-radius: 0px;">
+
       <div style="flex: 1; min-width: 250px; margin-right: 40px;">
         <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
         <p style="margin:0;">BFI Tower</p>
@@ -119,15 +120,8 @@ st.markdown("""
       <div style="flex: 1; min-width: 250px;">
         <h4 style="margin-bottom: 10px;">Customer Care</h4>
         <p style="font-size: 22px; font-weight: bold;">1500018</p>
-
-        <h4 style="margin-top: 30px;">Media Sosial</h4>
-        <p style="font-size: 16px;">
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a>
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Instagram</a>
-          <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a>
-          <a href="#" style="color:white; text-decoration:none;">TikTok</a>
-        </p>
       </div>
+
     </div>
 
     <p style="text-align:center; margin-top: 15px; font-size: 14px; color: grey;">
