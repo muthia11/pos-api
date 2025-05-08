@@ -7,6 +7,29 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
+st.markdown("""
+    <style>
+        .stApp {
+            background-color: white !important;
+        }
+        body {
+            background-color: white !important;
+            margin: 0;
+            padding: 0;
+        }
+        .block-container {
+            padding-bottom: 0rem !important;
+        }
+        footer {visibility: hidden;}
+        .element-container:has(.folium-map) {
+            background-color: white !important;
+            padding-bottom: 0px !important;
+            margin-bottom: 0px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Styling
 st.markdown("""
     <style>
