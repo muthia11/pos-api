@@ -5,7 +5,7 @@ from geopy.distance import geodesic
 import folium
 from streamlit_folium import st_folium
 
-st.set_page_config(page_title="POS Terdekat BFI", layout="centered")
+st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
 # Styling
 st.markdown("""
@@ -26,7 +26,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<h2 style='text-align:center; color:#005BAC;'>📍 Cek POS Terdekat</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center; color:#005BAC;'> POS BFI Finance – Temui Kami Lebih Dekat </h2>", unsafe_allow_html=True)
 
 # Input alamat
 st.markdown("Masukkan alamat Anda")
