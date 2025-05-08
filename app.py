@@ -122,25 +122,31 @@ if lat and lon:
 
 st.markdown(
     """
-    <div style="position: relative; left: 0; right: 0; width: 100vw; margin: 0 -5rem; background-color:#005BAC; color:white; padding: 30px 40px 20px; box-sizing: border-box;">
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: auto;">
-        <div style="flex: 1; min-width: 250px; margin-right: 40px;">
-          <h4 style="margin-bottom: 10px;">PT BFI Finance Indonesia Tbk</h4>
-          <p style="margin:0;">BFI Tower</p>
-          <p style="margin:0;">Sunburst CBD Lot. 1.2</p>
-          <p style="margin:0;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
-          <p style="margin:0;">BSD City - Tangerang Selatan 15322</p>
-          <p style="margin:15px 0 0;">📞 +62 21 2965 0300, 2965 0500</p>
-          <p style="margin:0;">📠 +62 21 2965 0757, 2965 0758</p>
+    <div style="position: relative; left: 0; right: 0; width: 100vw; margin: 0 -3.5rem; background-color:#005BAC; color:white; padding: 20px 24px 10px; box-sizing: border-box;">
+
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1100px; margin: auto;">
+
+        <div style="flex: 1; min-width: 250px; margin-right: 20px;">
+          <h4 style="margin-bottom: 6px; font-size: 16px;">PT BFI Finance Indonesia Tbk</h4>
+          <p style="margin:0; font-size:13px;">BFI Tower</p>
+          <p style="margin:0; font-size:13px;">Sunburst CBD Lot. 1.2</p>
+          <p style="margin:0; font-size:13px;">Jl. Kapt. Soebijanto Djojohadikusumo</p>
+          <p style="margin:0; font-size:13px;">BSD City - Tangerang Selatan 15322</p>
+          <p style="margin:10px 0 0; font-size:13px;">📞 +62 21 2965 0300, 2965 0500</p>
+          <p style="margin:0; font-size:13px;">📠 +62 21 2965 0757, 2965 0758</p>
         </div>
+
         <div style="flex: 1; min-width: 250px;">
-          <h4 style="margin-bottom: 10px;">Customer Care</h4>
-          <p style="font-size: 22px; font-weight: bold;">1500018</p>
+          <h4 style="margin-bottom: 6px; font-size: 16px;">Customer Care</h4>
+          <p style="font-size: 20px; font-weight: bold; margin: 0;">1500018</p>
         </div>
+
       </div>
-      <p style="text-align:center; margin-top: 20px; font-size: 14px; color: #e0e0e0;">
+
+      <p style="text-align:center; margin-top: 15px; font-size: 12px; color: #e0e0e0;">
         BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
       </p>
+
     </div>
     """,
     unsafe_allow_html=True
