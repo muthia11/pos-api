@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS Terdekat BFI", layout="centered")
 
-# CSS for white background and font styling
+# CSS Styling
 st.markdown("""
     <style>
         .stApp { background-color: white !important; }
@@ -15,7 +15,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Logo BFI at the top
+# Logo BFI
 st.markdown("""
     <div style='text-align:center; margin-bottom: 10px;'>
         <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png' width='120'/>
@@ -26,12 +26,10 @@ st.markdown("<h2 style='text-align:center; color:#005BAC;'>📍 Cek POS Terdekat
 
 alamat_input = st.text_input("Masukkan alamat Anda", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta")
 
-# Fallback ke query param jika ada
 query_params = st.query_params
 lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
 lat = lon = None
 
-# Nominatim
 def get_coordinates_from_address(alamat):
     url = "https://nominatim.openstreetmap.org/search"
     params = {"q": alamat, "format": "json", "limit": 1}
@@ -41,14 +39,12 @@ def get_coordinates_from_address(alamat):
         return float(response[0]['lat']), float(response[0]['lon'])
     return None, None
 
-# Ambil lokasi
 if alamat_input:
     lat, lon = get_coordinates_from_address(alamat_input)
 elif lat_param and lon_param:
     lat = float(lat_param)
     lon = float(lon_param)
 
-# Jika lokasi valid
 if lat and lon:
     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
     user_loc = (lat, lon)
@@ -87,4 +83,29 @@ if lat and lon:
                     <div style="font-size:13px;">📱 <a href="https://wa.me/{row['whatsapp']}" target="_blank">{row['whatsapp']}</a></div>
                     <div style="font-size:13px;">🕐 {row['jam_buka']}</div>
                     <div style="margin-top:10px;">
-                        <a href="https://wa.me/{row[']()
+                        <a href="https://wa.me/{row['whatsapp']}" target="_blank"
+                           style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
+                                  text-decoration:none; margin-right:8px; font-size:13px;">Hubungi Cabang</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination={row['lat']},{row['lon']}" 
+                           target="_blank"
+                           style="background-color:#005BAC; color:white; padding:6px 12px; border-radius:5px;
+                                  text-decoration:none; font-size:13px;">Petunjuk Arah</a>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
+    st.subheader("🗺️ Lokasi di Peta")
+    m = folium.Map(location=[lat, lon], zoom_start=13)
+    folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
+
+    for _, row in top3.iterrows():
+        folium.Marker(
+            location=[row["lat"], row["lon"]],
+            popup=row["POS Name"],
+            icon=folium.Icon(color="red")
+        ).add_to(m)
+
+    st_folium(m, width=700, height=500)
+
+else:
+    st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
