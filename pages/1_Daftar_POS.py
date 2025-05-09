@@ -66,62 +66,62 @@ try:
 
     # HTML Table with CSS Styling
     html_table = f"""
-    <style>
-        .custom-table-wrapper {{
-            overflow-x: auto;
-            max-height: 500px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            font-family: 'Segoe UI', sans-serif;
-        }}
+<style>
+    .custom-table-wrapper {{
+        overflow-x: auto;
+        max-height: 500px;
+        overflow-y: auto;
+        font-family: 'Segoe UI', sans-serif;
+    }}
 
-        table {{
-            width: 100%;
-            border-collapse: collapse;
-        }}
+    table {{
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+    }}
 
-        th {{
-            background-color: #005BAC;
-            color: white;
-            padding: 8px;
-            font-size: 13px;
-            text-align: left;
-        }}
+    th {{
+        background-color: #005BAC;
+        color: white;
+        padding: 12px 10px;
+        font-size: 14px;
+        text-align: left;
+    }}
 
-        td {{
-            border-top: 1px solid #eee;
-            padding: 8px;
-            font-size: 12px;
-            color: #333;
-            vertical-align: top;
-        }}
+    td {{
+        padding: 10px;
+        font-size: 13px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+    }}
 
-        tr:nth-child(even) {{
-            background-color: #f9f9f9;
-        }}
+    tr:hover {{
+        background-color: #f3f9ff;
+    }}
 
-        a .btn {{
-            background-color: #005BAC;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            text-align: center;
-            display: inline-block;
-            text-decoration: none;
-        }}
+    .btn {{
+        background-color: #005BAC;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.2s ease-in-out;
+    }}
 
-        a .btn:hover {{
-            background-color: #003f7d;
-        }}
-    </style>
+    .btn:hover {{
+        background-color: #004080;
+    }}
+</style>
 
-    <div class="custom-table-wrapper">
-        {df_display.to_html(escape=False, index=False)}
-    </div>
-    """
+<div class="custom-table-wrapper">
+    {df_display.to_html(escape=False, index=False)}
+</div>
+"""
+
 
     components.html(html_table, height=600, scrolling=True)
 
