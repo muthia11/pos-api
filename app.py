@@ -7,11 +7,10 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="POS BFI Terdekat", layout="centered")
 
+# ======== STYLE ========
 st.markdown("""
     <style>
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
+    #MainMenu, header, footer {visibility: hidden;}
     html, body {
         background-color: white !important;
         overflow-x: hidden;
@@ -20,47 +19,32 @@ st.markdown("""
         color: #666 !important;
         opacity: 1 !important;
     }
+    .stApp {
+        background-color: white !important;
+    }
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
+    }
+    .element-container:has(.folium-map) {
+        background-color: white !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    iframe {
+        margin-bottom: 0px !important;
+    }
+    html, body, [class*="css"] {
+        font-family: 'Segoe UI', sans-serif;
+    }
+    div[data-baseweb="input"] input {
+        background-color: white !important;
+        color: black !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-
-
-# ======== FIX SCROLL DAN BACKGROUND PUTIH ==========
-st.markdown("""
-    <style>
-        html, body {
-            background-color: white !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            overflow-x: hidden !important;
-        }
-        .stApp {
-            background-color: white !important;
-        }
-        .block-container {
-            padding-top: 1rem !important;
-            padding-bottom: 0rem !important;
-        }
-        footer, header {visibility: hidden;}
-        .element-container:has(.folium-map) {
-            background-color: white !important;
-            padding: 0px !important;
-            margin: 0px !important;
-        }
-        iframe {
-            margin-bottom: 0px !important;
-        }
-        html, body, [class*="css"] {
-            font-family: 'Segoe UI', sans-serif;
-        }
-        div[data-baseweb="input"] input {
-            background-color: white !important;
-            color: black !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-# Logo dan Judul
+# ======== LOGO & JUDUL ========
 st.markdown("""
     <div style='text-align:center; margin-bottom: 10px;'>
         <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png' width='120'/>
@@ -74,49 +58,37 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Input alamat
+# ======== FORM INPUT ALAMAT ========
 with st.form("form_alamat"):
     st.markdown("Masukkan alamat Anda")
     alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
     submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
 
-
-# CSS tambahan untuk placeholder
-st.markdown("""
-    <style>
-    input::placeholder {
-        color: #666 !important;  /* atau pakai #000 untuk hitam */
-        opacity: 1 !important;   /* pastikan tidak transparan */
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-
-# Query param fallback
-query_params = st.query_params
-lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
-lat = lon = None
-
-# Geocoding
+# ======== GEOCODING GOOGLE API ========
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 def get_coordinates_from_address(alamat):
     url = "https://maps.googleapis.com/maps/api/geocode/json"
-    params = {
-        "address": alamat,
-        "key": GOOGLE_API_KEY
-    }
-    response = requests.get(url, params=params).json()
-    if response["status"] == "OK":
-        location = response["results"][0]["geometry"]["location"]
-        return location["lat"], location["lng"]
+    params = {"address": alamat, "key": GOOGLE_API_KEY}
+    try:
+        response = requests.get(url, params=params).json()
+        if response["status"] == "OK":
+            location = response["results"][0]["geometry"]["location"]
+            return location["lat"], location["lng"]
+    except Exception as e:
+        st.error("Gagal mengambil koordinat dari Google API.")
     return None, None
 
+# ======== CEK ALAMAT & HITUNG JARAK ========
+query_params = st.query_params
+lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
+lat = lon = None
 
-# Hitung lokasi terdekat
 if submit_clicked and alamat_input:
     lat, lon = get_coordinates_from_address(alamat_input)
-        st.text_input("Alamat Anda", value=alamat_input, disabled=True)
+    st.text_input("Alamat Anda", value=alamat_input, disabled=True)
+    st.success("Berikut adalah POS terdekat dari alamat yang Anda masukkan.")
+
 elif lat_param and lon_param:
     lat = float(lat_param)
     lon = float(lon_param)
@@ -149,10 +121,7 @@ if lat and lon:
                 </div>
             """, unsafe_allow_html=True)
 
-
-# Tombol untuk menampilkan semua daftar POS
-# show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
-
+# ======== LINK KE HALAMAN DAFTAR POS ========
 st.markdown("""
 <a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/Daftar_POS" target="_self">
     <div style="
@@ -170,75 +139,7 @@ st.markdown("""
 </a>
 """, unsafe_allow_html=True)
 
-
-
-
-
-# # Judul
-# st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
-
-# # Style dan tampilan tabel
-# st.markdown("""
-#     <style>
-#         /* Background putih dan teks gelap */
-#         [data-testid="stDataFrame"] {
-#             background-color: white !important;
-#             color: black !important;
-#         }
-
-#         /* Header tabel warna biru BFI */
-#         [data-testid="stDataFrame"] thead tr th {
-#             background-color: white !important;
-#             color: #005BAC !important;
-#             font-weight: bold;
-#             font-size: 13px;
-#         }
-
-#         /* Teks isi tabel */
-#         [data-testid="stDataFrame"] tbody td {
-#             color: black !important;
-#             font-size: 12px;
-#         }
-#     </style>
-# """, unsafe_allow_html=True)
-
-
-# # Render table manually
-# def render_custom_table(df):
-#     html = '<table class="custom-table">'
-#     # Header
-#     html += '<tr>' + ''.join(f'<th>{col}</th>' for col in df.columns) + '</tr>'
-#     # Rows
-#     for _, row in df.iterrows():
-#         html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
-#     html += '</table>'
-#     st.dataframe(df_view, use_container_width=True)
-
-# # Load data and show
-# try:
-#     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
-#     df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
-#     df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
-#     render_custom_table(df_view)
-# except Exception as e:
-#     st.error(f"Gagal memuat data POS: {e}")
-
-#     Peta
-#     st.subheader("🗺️ Lokasi di Peta")
-#     m = folium.Map(location=[lat, lon], zoom_start=13)
-#     folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
-#     for _, row in top3.iterrows():
-#         folium.Marker(
-#             location=[row["lat"], row["lon"]],
-#             popup=row["POS Name"],
-#             icon=folium.Icon(color="red")
-#         ).add_to(m)
-#     st_folium(m, width=700, height=500)
-# else:
-#     st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
-
-
-# ====== FOOTER ======
+# ======== FOOTER ========
 st.markdown("""
 <hr style='margin-top: 30px;'/>
 
@@ -265,4 +166,3 @@ st.markdown("""
   BFI Finance berizin dan diawasi oleh Otoritas Jasa Keuangan
 </p>
 """, unsafe_allow_html=True)
-
