@@ -15,16 +15,6 @@ st.markdown("""
             padding-top: 1rem !important;
             padding-bottom: 1rem !important;
         }
-        th {
-            background-color: #005BAC !important;
-            color: white !important;
-            padding: 6px;
-            font-size: 13px;
-        }
-        td {
-            font-size: 12px !important;
-            padding: 6px;
-        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -71,70 +61,69 @@ try:
         axis=1
     )
 
-    # Hanya tampilkan kolom yang diperlukan
+    # Tampilkan hanya kolom yang dibutuhkan
     df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
 
-    # Tampilkan HTML table scrollable
-   html_table = f"""
-<style>
-    .custom-table-wrapper {{
-        overflow-x: auto;
-        max-height: 500px;
-        overflow-y: auto;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 10px;
-        font-family: 'Segoe UI', sans-serif;
-    }}
+    # HTML Table with CSS Styling
+    html_table = f"""
+    <style>
+        .custom-table-wrapper {{
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }}
 
-    table {{
-        width: 100%;
-        border-collapse: collapse;
-    }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+        }}
 
-    th {{
-        background-color: #005BAC;
-        color: white;
-        padding: 8px;
-        font-size: 13px;
-        text-align: left;
-    }}
+        th {{
+            background-color: #005BAC;
+            color: white;
+            padding: 8px;
+            font-size: 13px;
+            text-align: left;
+        }}
 
-    td {{
-        border-top: 1px solid #eee;
-        padding: 8px;
-        font-size: 12px;
-        color: #333;
-        vertical-align: top;
-    }}
+        td {{
+            border-top: 1px solid #eee;
+            padding: 8px;
+            font-size: 12px;
+            color: #333;
+            vertical-align: top;
+        }}
 
-    tr:nth-child(even) {{
-        background-color: #f9f9f9;
-    }}
+        tr:nth-child(even) {{
+            background-color: #f9f9f9;
+        }}
 
-    a .btn {{
-        background-color: #005BAC;
-        color: white;
-        padding: 4px 10px;
-        border-radius: 5px;
-        font-size: 12px;
-        text-align: center;
-        display: inline-block;
-        text-decoration: none;
-    }}
+        a .btn {{
+            background-color: #005BAC;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }}
 
-    a .btn:hover {{
-        background-color: #003f7d;
-    }}
-</style>
+        a .btn:hover {{
+            background-color: #003f7d;
+        }}
+    </style>
 
-<div class="custom-table-wrapper">
-    {df_display.to_html(escape=False, index=False)}
-</div>
-"""
+    <div class="custom-table-wrapper">
+        {df_display.to_html(escape=False, index=False)}
+    </div>
+    """
 
     components.html(html_table, height=600, scrolling=True)
-
 
 except Exception as e:
     st.error(f"Gagal memuat data POS. Periksa file Excel. Error: {e}")
