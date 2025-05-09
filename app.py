@@ -84,7 +84,7 @@ st.markdown("""
 <style>
 .hero-banner {
     position: relative;
-    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.jpg');
+    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png');
     background-size: contain;  /* WAS cover */
     background-repeat: no-repeat;
     background-position: center;
