@@ -138,6 +138,10 @@ if lat and lon:
                 </div>
             """, unsafe_allow_html=True)
 
+st.markdown("---")
+if st.button("📄 Lihat Semua Daftar Cabang POS BFI"):
+    st.switch_page("pos-api/01_All_POS_List.py")
+
     # Peta
 #     st.subheader("🗺️ Lokasi di Peta")
 #     m = folium.Map(location=[lat, lon], zoom_start=13)
