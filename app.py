@@ -75,8 +75,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Input alamat
-st.markdown("Masukkan alamat Anda")
-alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
+with st.form("form_alamat"):
+    st.markdown("Masukkan alamat Anda")
+    alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
+    submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
+
 
 # CSS tambahan untuk placeholder
 st.markdown("""
@@ -111,8 +114,9 @@ def get_coordinates_from_address(alamat):
 
 
 # Hitung lokasi terdekat
-if alamat_input:
+if submit_clicked and alamat_input:
     lat, lon = get_coordinates_from_address(alamat_input)
+        st.text_input("Alamat Anda", value=alamat_input, disabled=True)
 elif lat_param and lon_param:
     lat = float(lat_param)
     lon = float(lon_param)
