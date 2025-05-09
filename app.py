@@ -140,12 +140,13 @@ if lat and lon:
             """, unsafe_allow_html=True)
 
 st.markdown("""
-<a href="?page=Daftar%20POS" target="_self">
+<a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/?page=Daftar%20POS" target="_self">
     <button style="background-color:#005BAC; color:white; padding:10px 16px; border:none; border-radius:6px; font-size:14px;">
         📄 Lihat Semua Daftar Cabang POS BFI
     </button>
 </a>
 """, unsafe_allow_html=True)
+
 
 
     # Peta
