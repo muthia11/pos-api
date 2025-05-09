@@ -59,19 +59,30 @@ st.markdown("""
 # """, unsafe_allow_html=True)
 with st.container():
     st.markdown("""
-    <div style="text-align:center; padding: 40px 20px; background-color: #F5F9FF; border-radius: 12px; margin-bottom: 24px;">
-        <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png' width='120' style="margin-bottom: 12px;" />
-        <h2 style='margin-bottom: 6px; font-weight: 700; font-size: 30px;'>POS BFI Finance</h2>
-        <p style="font-size: 18px; margin-bottom: 4px;">Temui Kami Lebih Dekat</p>
-        <p style="font-size: 14px; color: #444; margin-bottom: 24px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+    <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        background-color: #F5F9FF;
+        border-radius: 12px;
+        margin-bottom: 24px;
+    ">
+        <div style="text-align: center;">
+            <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png'
+                 width='120' style="margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
+            <h2 style="color: #005BAC; margin-bottom: 10px; font-size: 30px; font-weight: bold;">POS BFI Finance</h2>
+            <p style="font-size: 18px; margin-bottom: 4px;">Temui Kami Lebih Dekat</p>
+            <p style="font-size: 14px; color: #444;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-# ======== FORM INPUT ALAMAT ========
-with st.form("form_alamat"):
-    st.markdown("**Masukkan alamat Anda**")
-    alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
-    submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
+    with st.form("form_alamat"):
+        st.markdown("**Masukkan alamat Anda**")
+        alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
+        submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
+
 
 # ======== GEOCODING GOOGLE API ========
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
