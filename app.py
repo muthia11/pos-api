@@ -87,7 +87,7 @@ st.markdown("""
     width: 100%;
     max-width: 960px;
     margin: 0 auto 20px auto;
-    height: 160px;
+    height: 170px;
     overflow: hidden;
     border-radius: 12px;
     background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png');
@@ -101,7 +101,7 @@ st.markdown("""
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,91,172,0.55); /* Transparansi biru BFI */
+    background-color: rgba(0, 45, 100, 0.6);  /* BFI dark blue with stronger transparency */
 }
 
 .header-text {
@@ -109,17 +109,17 @@ st.markdown("""
     z-index: 2;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px 20px;
 }
 
 .header-text h2 {
-    margin-bottom: 6px;
-    font-size: 24px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 26px;
+    font-weight: 700;
 }
 
 .header-text p {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
 }
 </style>
@@ -128,10 +128,11 @@ st.markdown("""
   <div class="header-text">
     <h2>POS BFI Finance</h2>
     <p>Temui Kami Lebih Dekat</p>
-    <p style="font-size: 13px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+    <p style="font-size: 13px; margin-top: 4px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
   </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
