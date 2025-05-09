@@ -61,7 +61,7 @@ with st.container():
     st.markdown("""
     <div style="text-align:center; padding: 40px 20px; background-color: #F5F9FF; border-radius: 12px; margin-bottom: 24px;">
         <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png' width='120' style="margin-bottom: 12px;" />
-        <h2 style="color: #005BAC; margin-bottom: 10px; font-size: 30px;">POS BFI Finance</h2>
+        <h2 style='margin-bottom: 6px; font-weight: 700; font-size: 30px;'>POS BFI Finance</h2>
         <p style="font-size: 18px; margin-bottom: 4px;">Temui Kami Lebih Dekat</p>
         <p style="font-size: 14px; color: #444; margin-bottom: 24px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
     </div>
