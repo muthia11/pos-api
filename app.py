@@ -139,12 +139,23 @@ if lat and lon:
                 </div>
             """, unsafe_allow_html=True)
 
-st.markdown("""
-<button onclick="window.location.href='https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/?page=Daftar%20POS'"
-        style="background-color:#005BAC; color:white; padding:10px 16px; border:none; border-radius:6px; font-size:14px; cursor:pointer;">
-    📄 Lihat Semua Daftar Cabang POS BFI
-</button>
-""", unsafe_allow_html=True)
+
+# Tombol untuk menampilkan semua daftar POS
+show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
+
+# Jika tombol ditekan, tampilkan seluruh data POS
+if show_all:
+    st.markdown("---")
+    st.markdown("<h3 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h3>", unsafe_allow_html=True)
+
+    try:
+        df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
+        df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
+        df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
+        st.dataframe(df_view, use_container_width=True)
+    except Exception as e:
+        st.error(f"Gagal memuat data POS: {e}")
+
 
 
 
