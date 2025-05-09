@@ -90,7 +90,7 @@ st.markdown("""
     height: 160px;
     overflow: hidden;
     border-radius: 12px;
-    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner-header.png');
+    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png');
     background-size: cover;
     background-position: center;
 }
