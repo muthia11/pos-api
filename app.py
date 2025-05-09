@@ -153,6 +153,7 @@ st.markdown("""
 
 
 
+
 # # Judul
 # st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
 
@@ -201,10 +202,6 @@ st.markdown("""
 #     render_custom_table(df_view)
 # except Exception as e:
 #     st.error(f"Gagal memuat data POS: {e}")
-
-
-
-
 
     # Peta
 #     st.subheader("🗺️ Lokasi di Peta")
