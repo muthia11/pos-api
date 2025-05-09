@@ -165,15 +165,17 @@ def get_coordinates_from_address(alamat):
 query_params = st.query_params
 lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
 lat = lon = None
+source = None  # Tambahan variabel untuk menandai asal koordinat
 
 if submit_clicked and alamat_input:
     lat, lon = get_coordinates_from_address(alamat_input)
+    source = "input"
     st.text_input("Alamat Anda", value=alamat_input, disabled=True)
-    st.success("Berikut adalah POS terdekat dari alamat yang Anda masukkan.")
 
 elif lat_param and lon_param:
     lat = float(lat_param)
     lon = float(lon_param)
+    source = "auto"
 
 if lat and lon:
     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
@@ -181,6 +183,13 @@ if lat and lon:
     df["distance_km"] = df.apply(lambda row: geodesic(user_loc, (row["lat"], row["lon"])).km, axis=1)
     top3 = df.sort_values("distance_km").head(3)
 
+    # 💬 Notifikasi berdasarkan asal koordinat
+    if source == "input":
+        st.success("Berikut adalah POS terdekat dari alamat yang Anda masukkan.")
+    elif source == "auto":
+        st.success("Berikut Top 3 POS terdekat dengan lokasi Anda saat ini.")
+
+    # 💳 Tampilkan 3 POS terdekat
     col1, col2, col3 = st.columns(3)
     for col, (_, row) in zip([col1, col2, col3], top3.iterrows()):
         with col:
