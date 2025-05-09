@@ -143,19 +143,6 @@ if lat and lon:
 # Tombol untuk menampilkan semua daftar POS
 show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
 
-# Jika tombol ditekan, tampilkan seluruh data POS
-if show_all:
-    st.markdown("---")
-    st.markdown("<h3 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h3>", unsafe_allow_html=True)
-
-    try:
-        df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
-        df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
-        df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
-        st.dataframe(df_view, use_container_width=True)
-    except Exception as e:
-        st.error(f"Gagal memuat data POS: {e}")
-
 st.markdown("""
     <style>
         /* Ukuran font tabel lebih kecil */
@@ -177,10 +164,23 @@ st.markdown("""
 
         /* Warna teks isi */
         .dataframe td {
-            color: black !important;
+            color: white !important;
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Jika tombol ditekan, tampilkan seluruh data POS
+if show_all:
+    st.markdown("---")
+    st.markdown("<h3 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h3>", unsafe_allow_html=True)
+
+    try:
+        df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
+        df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
+        df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
+        st.dataframe(df_view, use_container_width=True)
+    except Exception as e:
+        st.error(f"Gagal memuat data POS: {e}")
 
 
 
