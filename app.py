@@ -164,7 +164,7 @@ st.markdown("""
 
         /* Warna teks isi */
         .dataframe td {
-            color: white !important;
+            color: black !important;
         }
     </style>
 """, unsafe_allow_html=True)
