@@ -17,9 +17,12 @@ st.markdown("""
         th {
             background-color: #005BAC !important;
             color: white !important;
+            padding: 6px;
+            font-size: 13px;
         }
         td {
-            font-size: 14px !important;
+            font-size: 12px !important;
+            padding: 6px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -31,16 +34,46 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# ===== TOMBOL KEMBALI =====
 st.markdown("""
-    <h2 style='text-align:center; color:#005BAC;'>Daftar Lengkap POS BFI Finance</h2>
-    <p style='text-align:center; font-size:16px;'>Temukan seluruh cabang POS BFI di Indonesia</p>
+<a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app" target="_self">
+    <div style="
+        display: inline-block;
+        background-color: #888;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 13px;
+        text-decoration: none;
+        margin-bottom: 10px;
+        cursor: pointer;">
+        ⬅️ Kembali ke Halaman Utama
+    </div>
+</a>
 """, unsafe_allow_html=True)
 
-# ===== LOAD DATA =====
+# ===== JUDUL =====
+st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:14px;'>Klik tombol 'Arahkan' untuk membuka rute ke lokasi POS.</p>", unsafe_allow_html=True)
+
+# ===== LOAD DATA & TABEL =====
 try:
     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
-    df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
-    df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
-    st.dataframe(df_view, use_container_width=True)
+
+    df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka", "lat", "lon"]].copy()
+    df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "lat", "lon"]
+
+    # Tambah kolom tombol arahkan
+    df_view["Arahkan"] = df_view.apply(
+        lambda row: f"""<a href="https://www.google.com/maps/dir/?api=1&destination={row['lat']},{row['lon']}" target="_blank">
+        <div style='background-color:#005BAC; color:white; padding:4px 10px; border-radius:5px; font-size:12px; text-align:center;'>Arahkan</div></a>""",
+        axis=1
+    )
+
+    # Sembunyikan kolom lat/lon di tampilan
+    df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
+
+    st.write(df_display.to_html(escape=False, index=False), unsafe_allow_html=True)
+
 except Exception as e:
-    st.error(f"Gagal memuat data POS. Periksa file Excel. Error: {e}")
+    st.error(f"Gagal memuat data POS: {e}")
