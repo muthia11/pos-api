@@ -143,33 +143,43 @@ if lat and lon:
 # Tombol untuk menampilkan semua daftar POS
 show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
 
-# Judul
-st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
-
-# Style dan tampilan tabel
 st.markdown("""
-    <style>
-        /* Background putih dan teks gelap */
-        [data-testid="stDataFrame"] {
-            background-color: white !important;
-            color: black !important;
-        }
-
-        /* Header tabel warna biru BFI */
-        [data-testid="stDataFrame"] thead tr th {
-            background-color: white !important;
-            color: #005BAC !important;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        /* Teks isi tabel */
-        [data-testid="stDataFrame"] tbody td {
-            color: black !important;
-            font-size: 12px;
-        }
-    </style>
+<a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/?page=Daftar%20POS%20BFI" target="_self">
+    <div style="display:inline-block; background-color:#005BAC; color:white; padding:10px 16px; border-radius:6px; font-size:14px; text-decoration:none;">
+        📄 Lihat Semua Daftar Cabang POS BFI
+    </div>
+</a>
 """, unsafe_allow_html=True)
+
+
+
+# # Judul
+# st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
+
+# # Style dan tampilan tabel
+# st.markdown("""
+#     <style>
+#         /* Background putih dan teks gelap */
+#         [data-testid="stDataFrame"] {
+#             background-color: white !important;
+#             color: black !important;
+#         }
+
+#         /* Header tabel warna biru BFI */
+#         [data-testid="stDataFrame"] thead tr th {
+#             background-color: white !important;
+#             color: #005BAC !important;
+#             font-weight: bold;
+#             font-size: 13px;
+#         }
+
+#         /* Teks isi tabel */
+#         [data-testid="stDataFrame"] tbody td {
+#             color: black !important;
+#             font-size: 12px;
+#         }
+#     </style>
+# """, unsafe_allow_html=True)
 
 
 # Render table manually
