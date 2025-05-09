@@ -108,6 +108,10 @@ try:
         vertical-align: top;
     }}
 
+    tr:nth-child(even) {{
+        background-color: #f9f9f9;
+    }}
+
     a .btn {{
         background-color: #005BAC;
         color: white;
@@ -128,8 +132,9 @@ try:
     {df_display.to_html(escape=False, index=False)}
 </div>
 """
+
     components.html(html_table, height=600, scrolling=True)
-tr:nth-child(even) { background-color: #f9f9f9; }
+
 
 except Exception as e:
     st.error(f"Gagal memuat data POS. Periksa file Excel. Error: {e}")
