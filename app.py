@@ -144,7 +144,7 @@ if lat and lon:
 # show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
 
 st.markdown("""
-<a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/?page=Daftar%20POS" target="_self">
+<a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/Daftar_POS" target="_self">
     <div style="
         display: inline-block;
         background-color: #005BAC;
@@ -159,6 +159,7 @@ st.markdown("""
     </div>
 </a>
 """, unsafe_allow_html=True)
+
 
 
 
