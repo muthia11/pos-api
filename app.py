@@ -101,7 +101,7 @@ st.markdown("""
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 45, 100, 0.6);  /* BFI dark blue with stronger transparency */
+    background-color: rgba(0, 45, 100, 0.8);  /* BFI dark blue with stronger transparency */
 }
 
 .header-text {
