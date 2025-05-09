@@ -149,26 +149,28 @@ st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", un
 # Style dan tampilan tabel
 st.markdown("""
     <style>
-        .custom-table {
-            background-color: white;
-            border-radius: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
+        /* Background putih dan teks gelap */
+        [data-testid="stDataFrame"] {
+            background-color: white !important;
+            color: black !important;
         }
-        .custom-table th {
-            background-color: #fff;
-            color: #005BAC;
-            text-align: left;
-            font-size: 14px;
-            padding: 6px;
-        }
-        .custom-table td {
-            color: black;
+
+        /* Header tabel warna biru BFI */
+        [data-testid="stDataFrame"] thead tr th {
+            background-color: white !important;
+            color: #005BAC !important;
+            font-weight: bold;
             font-size: 13px;
-            padding: 6px;
+        }
+
+        /* Teks isi tabel */
+        [data-testid="stDataFrame"] tbody td {
+            color: black !important;
+            font-size: 12px;
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Render table manually
 def render_custom_table(df):
@@ -179,7 +181,7 @@ def render_custom_table(df):
     for _, row in df.iterrows():
         html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
     html += '</table>'
-    st.markdown(html, unsafe_allow_html=True)
+    st.dataframe(df_view, use_container_width=True)
 
 # Load data and show
 try:
