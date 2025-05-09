@@ -44,44 +44,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<style>
-.hero-banner {
-    position: relative;
-    background-image: url('https://github.com/muthia11/pos-api/blob/a9537d870b53a6b6923ac1594918a40ac0449619/pos-banner.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    padding: 80px 20px 60px 20px;
-    text-align: center;
-    color: white;
-}
-.hero-banner h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-.hero-banner p {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-.hero-banner-overlay {
-    background: rgba(0,0,0,0.4);
-    border-radius: 12px;
-    padding: 40px 20px;
-}
-</style>
-
-<div class="hero-banner">
-    <div class="hero-banner-overlay">
-        <h2>POS BFI Finance</h2>
-        <p>Temui Kami Lebih Dekat</p>
-        <p style="font-size: 14px; margin-top: 6px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-
 
 # ======== LOGO & JUDUL ========
 # st.markdown("""
@@ -117,10 +79,51 @@ st.markdown("""
 #     </div>
 #     """, unsafe_allow_html=True)
 
-    with st.form("form_alamat"):
-        st.markdown("**Masukkan alamat Anda**")
-        alamat_input = st.text_input("", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed")
-        submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
+# ======== HERO SECTION DENGAN BACKGROUND GAMBAR ========
+st.markdown("""
+<style>
+.hero-banner {
+    position: relative;
+    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    padding: 80px 20px 60px 20px;
+    text-align: center;
+    color: white;
+}
+.hero-banner h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.hero-banner p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.hero-banner-overlay {
+    background: rgba(0,0,0,0.4);
+    border-radius: 12px;
+    padding: 40px 20px;
+}
+</style>
+
+<div class="hero-banner">
+    <div class="hero-banner-overlay">
+        <h2>POS BFI Finance</h2>
+        <p>Temui Kami Lebih Dekat</p>
+        <p style="font-size: 14px; margin-top: 6px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ======== FORM INPUT ALAMAT ========
+with st.form("form_alamat"):
+    st.markdown("**Masukkan alamat Anda**")
+    alamat_input = st.text_input(
+        "", placeholder="Contoh: Jl. Sudirman No. 10, Jakarta", label_visibility="collapsed"
+    )
+    submit_clicked = st.form_submit_button("🔍 Cari POS Terdekat")
 
 
 # ======== GEOCODING GOOGLE API ========
