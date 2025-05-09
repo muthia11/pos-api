@@ -85,26 +85,30 @@ st.markdown("""
 .hero-banner {
     position: relative;
     background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.jpg');
-    background-size: cover;
+    background-size: contain;  /* WAS cover */
+    background-repeat: no-repeat;
     background-position: center;
-    border-radius: 12px;
-    padding: 80px 20px 60px 20px;
+    min-height: 300px;
+    padding: 60px 20px;
     text-align: center;
     color: white;
+    border-radius: 12px;
+}
+.hero-banner-overlay {
+    background: rgba(0,0,0,0.65);  /* transparency ditingkatkan */
+    display: inline-block;
+    padding: 30px 20px;
+    border-radius: 12px;
+    max-width: 90%;
 }
 .hero-banner h2 {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 8px;
 }
 .hero-banner p {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-.hero-banner-overlay {
-    background: rgba(0,0,0,0.4);
-    border-radius: 12px;
-    padding: 40px 20px;
+    font-size: 16px;
+    margin: 4px 0;
 }
 </style>
 
@@ -112,10 +116,11 @@ st.markdown("""
     <div class="hero-banner-overlay">
         <h2>POS BFI Finance</h2>
         <p>Temui Kami Lebih Dekat</p>
-        <p style="font-size: 14px; margin-top: 6px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+        <p style="font-size: 14px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 # ======== FORM INPUT ALAMAT ========
 with st.form("form_alamat"):
