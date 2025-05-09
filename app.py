@@ -88,6 +88,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<a href="/pos-api/01_All_POS_List" target="_self">
+    <button style="background-color:#005BAC; color:white; padding:10px 16px; border:none; border-radius:6px; font-size:14px;">
+        📄 Lihat Semua Daftar Cabang POS BFI
+    </button>
+</a>
+""", unsafe_allow_html=True)
+
+
 # Query param fallback
 query_params = st.query_params
 lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
@@ -138,9 +147,6 @@ if lat and lon:
                 </div>
             """, unsafe_allow_html=True)
 
-st.markdown("---")
-if st.button("📄 Lihat Semua Daftar Cabang POS BFI"):
-    st.switch_page("pos-api/01_All_POS_List.py")
 
     # Peta
 #     st.subheader("🗺️ Lokasi di Peta")
