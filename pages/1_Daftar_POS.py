@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Daftar POS", layout="wide")
 
@@ -60,34 +61,26 @@ st.markdown("<p style='font-size:14px;'>Klik tombol 'Arahkan' untuk membuka rute
 try:
     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
 
+    # Ambil kolom utama + koordinat
     df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka", "lat", "lon"]].copy()
     df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "lat", "lon"]
 
-    # Tambah kolom tombol arahkan
-    df_view["Arahkan"] = df_view.apply(lambda row: f'<a href="https://www.google.com/maps/dir/?api=1&destination={row["lat"]},{row["lon"]}" target="_blank"><div style="background-color:#005BAC; color:white; padding:4px 10px; border-radius:5px; font-size:12px; text-align:center;">Arahkan</div></a>',
-    axis=1)
+    # Tambahkan kolom tombol arahkan
+    df_view["Arahkan"] = df_view.apply(
+        lambda row: f'<a href="https://www.google.com/maps/dir/?api=1&destination={row["lat"]},{row["lon"]}" target="_blank"><div style="background-color:#005BAC; color:white; padding:4px 10px; border-radius:5px; font-size:12px; text-align:center;">Arahkan</div></a>',
+        axis=1
+    )
 
-
-    # Sembunyikan kolom lat/lon di tampilan
+    # Hanya tampilkan kolom yang diperlukan
     df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
 
-    # === Scrollable container dengan HTML table dan tombol arahkan ===
-st.markdown("""
-<div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
-""", unsafe_allow_html=True)
-
-import streamlit.components.v1 as components
-
-html_table = f"""
-<div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
-    {df_display.to_html(escape=False, index=False)}
-</div>
-"""
-
-components.html(html_table, height=600, scrolling=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
-
+    # Tampilkan HTML table scrollable
+    html_table = f"""
+    <div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
+        {df_display.to_html(escape=False, index=False)}
+    </div>
+    """
+    components.html(html_table, height=600, scrolling=True)
 
 except Exception as e:
-    st.error(f"Gagal memuat data POS: {e}")
+    st.error(f"Gagal memuat data POS. Periksa file Excel. Error: {e}")
