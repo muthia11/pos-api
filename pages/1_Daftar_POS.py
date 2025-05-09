@@ -57,9 +57,10 @@ try:
 
     # Tambahkan kolom tombol arahkan
     df_view["Arahkan"] = df_view.apply(
-        lambda row: f'<a href="https://www.google.com/maps/dir/?api=1&destination={row["lat"]},{row["lon"]}" target="_blank"><div style="background-color:#005BAC; color:white; padding:4px 10px; border-radius:5px; font-size:12px; text-align:center;">Arahkan</div></a>',
-        axis=1
-    )
+    lambda row: f'<a class="btn" href="https://www.google.com/maps/dir/?api=1&destination={row["lat"]},{row["lon"]}" target="_blank">To Location</a>',
+    axis=1
+)
+
 
     # Tampilkan hanya kolom yang dibutuhkan
     df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
