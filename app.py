@@ -183,24 +183,24 @@ st.markdown("""
 
 
 # Render table manually
-def render_custom_table(df):
-    html = '<table class="custom-table">'
-    # Header
-    html += '<tr>' + ''.join(f'<th>{col}</th>' for col in df.columns) + '</tr>'
-    # Rows
-    for _, row in df.iterrows():
-        html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
-    html += '</table>'
-    st.dataframe(df_view, use_container_width=True)
+# def render_custom_table(df):
+#     html = '<table class="custom-table">'
+#     # Header
+#     html += '<tr>' + ''.join(f'<th>{col}</th>' for col in df.columns) + '</tr>'
+#     # Rows
+#     for _, row in df.iterrows():
+#         html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
+#     html += '</table>'
+#     st.dataframe(df_view, use_container_width=True)
 
-# Load data and show
-try:
-    df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
-    df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
-    df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
-    render_custom_table(df_view)
-except Exception as e:
-    st.error(f"Gagal memuat data POS: {e}")
+# # Load data and show
+# try:
+#     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
+#     df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
+#     df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
+#     render_custom_table(df_view)
+# except Exception as e:
+#     st.error(f"Gagal memuat data POS: {e}")
 
 
 
