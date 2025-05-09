@@ -154,68 +154,68 @@ st.markdown("""
 
 
 
-# # Judul
-# st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
+# Judul
+st.markdown("<h4 style='color:#005BAC;'>Daftar Lengkap POS BFI Finance</h4>", unsafe_allow_html=True)
 
-# # Style dan tampilan tabel
-# st.markdown("""
-#     <style>
-#         /* Background putih dan teks gelap */
-#         [data-testid="stDataFrame"] {
-#             background-color: white !important;
-#             color: black !important;
-#         }
+# Style dan tampilan tabel
+st.markdown("""
+    <style>
+        /* Background putih dan teks gelap */
+        [data-testid="stDataFrame"] {
+            background-color: white !important;
+            color: black !important;
+        }
 
-#         /* Header tabel warna biru BFI */
-#         [data-testid="stDataFrame"] thead tr th {
-#             background-color: white !important;
-#             color: #005BAC !important;
-#             font-weight: bold;
-#             font-size: 13px;
-#         }
+        /* Header tabel warna biru BFI */
+        [data-testid="stDataFrame"] thead tr th {
+            background-color: white !important;
+            color: #005BAC !important;
+            font-weight: bold;
+            font-size: 13px;
+        }
 
-#         /* Teks isi tabel */
-#         [data-testid="stDataFrame"] tbody td {
-#             color: black !important;
-#             font-size: 12px;
-#         }
-#     </style>
-# """, unsafe_allow_html=True)
+        /* Teks isi tabel */
+        [data-testid="stDataFrame"] tbody td {
+            color: black !important;
+            font-size: 12px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 
 # Render table manually
-# def render_custom_table(df):
-#     html = '<table class="custom-table">'
-#     # Header
-#     html += '<tr>' + ''.join(f'<th>{col}</th>' for col in df.columns) + '</tr>'
-#     # Rows
-#     for _, row in df.iterrows():
-#         html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
-#     html += '</table>'
-#     st.dataframe(df_view, use_container_width=True)
+def render_custom_table(df):
+    html = '<table class="custom-table">'
+    # Header
+    html += '<tr>' + ''.join(f'<th>{col}</th>' for col in df.columns) + '</tr>'
+    # Rows
+    for _, row in df.iterrows():
+        html += '<tr>' + ''.join(f'<td>{cell}</td>' for cell in row) + '</tr>'
+    html += '</table>'
+    st.dataframe(df_view, use_container_width=True)
 
-# # Load data and show
-# try:
-#     df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
-#     df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
-#     df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
-#     render_custom_table(df_view)
-# except Exception as e:
-#     st.error(f"Gagal memuat data POS: {e}")
+# Load data and show
+try:
+    df = pd.read_excel("pos_data.xlsx", engine="openpyxl")
+    df_view = df[["POS Name", "alamat", "whatsapp", "jam_buka"]].copy()
+    df_view.columns = ["Nama POS", "Alamat", "WhatsApp", "Jam Buka"]
+    render_custom_table(df_view)
+except Exception as e:
+    st.error(f"Gagal memuat data POS: {e}")
 
-    # Peta
-#     st.subheader("🗺️ Lokasi di Peta")
-#     m = folium.Map(location=[lat, lon], zoom_start=13)
-#     folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
-#     for _, row in top3.iterrows():
-#         folium.Marker(
-#             location=[row["lat"], row["lon"]],
-#             popup=row["POS Name"],
-#             icon=folium.Icon(color="red")
-#         ).add_to(m)
-#     st_folium(m, width=700, height=500)
-# else:
-#     st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
+    Peta
+    st.subheader("🗺️ Lokasi di Peta")
+    m = folium.Map(location=[lat, lon], zoom_start=13)
+    folium.Marker(location=[lat, lon], popup="📍 Lokasi Anda", icon=folium.Icon(color="blue")).add_to(m)
+    for _, row in top3.iterrows():
+        folium.Marker(
+            location=[row["lat"], row["lon"]],
+            popup=row["POS Name"],
+            icon=folium.Icon(color="red")
+        ).add_to(m)
+    st_folium(m, width=700, height=500)
+else:
+    st.info("Silakan masukkan alamat atau gunakan URL dengan ?lat=...&lon=...")
 
 
 # ====== FOOTER ======
