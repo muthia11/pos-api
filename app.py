@@ -82,58 +82,57 @@ st.markdown("""
 # ======== HERO SECTION DENGAN BACKGROUND GAMBAR ========
 st.markdown("""
 <style>
-.hero-banner {
+.header-banner {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 12px;
+    max-width: 960px;
+    margin: 0 auto 20px auto;
+    height: 160px;
     overflow: hidden;
+    border-radius: 12px;
+    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner-header.png');
+    background-size: cover;
+    background-position: center;
 }
 
-.hero-banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.hero-overlay {
+.header-banner::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 91, 172, 0.5); /* Transparansi biru BFI */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
+    background-color: rgba(0,91,172,0.55); /* Transparansi biru BFI */
+}
+
+.header-text {
+    position: relative;
+    z-index: 2;
     color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.hero-overlay h2 {
-    font-size: 32px;
-    font-weight: 700;
+.header-text h2 {
     margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.hero-overlay p {
-    font-size: 16px;
-    margin: 4px 0;
+.header-text p {
+    font-size: 14px;
+    margin: 0;
 }
 </style>
 
-<div class="hero-banner">
-    <img src="https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png" alt="POS BFI Banner">
-    <div class="hero-overlay">
-        <h2>POS BFI Finance</h2>
-        <p>Temui Kami Lebih Dekat</p>
-        <p style="font-size: 14px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
-    </div>
+<div class="header-banner">
+  <div class="header-text">
+    <h2>POS BFI Finance</h2>
+    <p>Temui Kami Lebih Dekat</p>
+    <p style="font-size: 13px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+  </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
