@@ -95,7 +95,7 @@ lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
 lat = lon = None
 
 # Geocoding
-GOOGLE_API_KEY = "AIzaSyDHGJO3J1JIC7XeqnxPJaeLgxvhFf38wmI"
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 def get_coordinates_from_address(alamat):
     url = "https://maps.googleapis.com/maps/api/geocode/json"
