@@ -76,7 +76,15 @@ st.markdown("""
 <div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
 """, unsafe_allow_html=True)
 
-st.write(df_display.to_html(escape=False, index=False), unsafe_allow_html=True)
+import streamlit.components.v1 as components
+
+html_table = f"""
+<div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
+    {df_display.to_html(escape=False, index=False)}
+</div>
+"""
+
+components.html(html_table, height=600, scrolling=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
 
