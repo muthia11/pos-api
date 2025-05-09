@@ -141,7 +141,7 @@ if lat and lon:
 
 
 # Tombol untuk menampilkan semua daftar POS
-show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
+# show_all = st.button("📄 Lihat Semua Daftar Cabang POS BFI")
 
 st.markdown("""
 <a href="https://pos-api-fyxnm84xudbbvk5nmyhbxb.streamlit.app/?page=Daftar%20POS" target="_self">
