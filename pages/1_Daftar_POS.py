@@ -71,7 +71,15 @@ try:
     # Sembunyikan kolom lat/lon di tampilan
     df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
 
-    st.write(df_display.to_html(escape=False, index=False), unsafe_allow_html=True)
+    # === Scrollable container dengan HTML table dan tombol arahkan ===
+st.markdown("""
+<div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
+""", unsafe_allow_html=True)
+
+st.write(df_display.to_html(escape=False, index=False), unsafe_allow_html=True)
+
+st.markdown("</div>", unsafe_allow_html=True)
+
 
 except Exception as e:
     st.error(f"Gagal memuat data POS: {e}")
