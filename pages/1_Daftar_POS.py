@@ -75,12 +75,61 @@ try:
     df_display = df_view[["Nama POS", "Alamat", "WhatsApp", "Jam Buka", "Arahkan"]]
 
     # Tampilkan HTML table scrollable
-    html_table = f"""
-    <div style="overflow-x:auto; max-height:500px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
-        {df_display.to_html(escape=False, index=False)}
-    </div>
-    """
+   html_table = f"""
+<style>
+    .custom-table-wrapper {{
+        overflow-x: auto;
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        font-family: 'Segoe UI', sans-serif;
+    }}
+
+    table {{
+        width: 100%;
+        border-collapse: collapse;
+    }}
+
+    th {{
+        background-color: #005BAC;
+        color: white;
+        padding: 8px;
+        font-size: 13px;
+        text-align: left;
+    }}
+
+    td {{
+        border-top: 1px solid #eee;
+        padding: 8px;
+        font-size: 12px;
+        color: #333;
+        vertical-align: top;
+    }}
+
+    a .btn {{
+        background-color: #005BAC;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+    }}
+
+    a .btn:hover {{
+        background-color: #003f7d;
+    }}
+</style>
+
+<div class="custom-table-wrapper">
+    {df_display.to_html(escape=False, index=False)}
+</div>
+"""
     components.html(html_table, height=600, scrolling=True)
+tr:nth-child(even) { background-color: #f9f9f9; }
 
 except Exception as e:
     st.error(f"Gagal memuat data POS. Periksa file Excel. Error: {e}")
