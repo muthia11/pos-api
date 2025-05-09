@@ -156,6 +156,31 @@ if show_all:
     except Exception as e:
         st.error(f"Gagal memuat data POS: {e}")
 
+st.markdown("""
+    <style>
+        /* Ukuran font tabel lebih kecil */
+        .dataframe th, .dataframe td {
+            font-size: 12px !important;
+        }
+
+        /* Warna latar belakang tetap putih */
+        .stDataFrame {
+            background-color: white !important;
+        }
+
+        /* Warna teks header sesuai warna BFI */
+        .dataframe th {
+            background-color: white !important;
+            color: #005BAC !important;
+            font-weight: bold !important;
+        }
+
+        /* Warna teks isi */
+        .dataframe td {
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 
 
