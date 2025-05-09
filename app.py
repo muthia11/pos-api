@@ -88,14 +88,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<a href="?page=Daftar%20POS%20BFI" target="_self">
-    <button style="background-color:#005BAC; color:white; padding:10px 16px; border:none; border-radius:6px; font-size:14px;">
-        📄 Lihat Semua Daftar Cabang POS BFI
-    </button>
-</a>
-""", unsafe_allow_html=True)
-
 
 # Query param fallback
 query_params = st.query_params
@@ -146,6 +138,14 @@ if lat and lon:
                     </div>
                 </div>
             """, unsafe_allow_html=True)
+
+st.markdown("""
+<a href="?page=Daftar%20POS" target="_self">
+    <button style="background-color:#005BAC; color:white; padding:10px 16px; border:none; border-radius:6px; font-size:14px;">
+        📄 Lihat Semua Daftar Cabang POS BFI
+    </button>
+</a>
+""", unsafe_allow_html=True)
 
 
     # Peta
