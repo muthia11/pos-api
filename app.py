@@ -84,42 +84,57 @@ st.markdown("""
 <style>
 .hero-banner {
     position: relative;
-    background-image: url('https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png');
-    background-size: contain;  /* WAS cover */
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 300px;
-    padding: 60px 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 91, 172, 0.5); /* Transparansi biru BFI */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 40px 20px;
     color: white;
-    border-radius: 12px;
 }
-.hero-banner-overlay {
-    background: rgba(0,0,0,0.65);  /* transparency ditingkatkan */
-    display: inline-block;
-    padding: 30px 20px;
-    border-radius: 12px;
-    max-width: 90%;
-}
-.hero-banner h2 {
-    font-size: 30px;
+
+.hero-overlay h2 {
+    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
-.hero-banner p {
+
+.hero-overlay p {
     font-size: 16px;
     margin: 4px 0;
 }
 </style>
 
 <div class="hero-banner">
-    <div class="hero-banner-overlay">
+    <img src="https://raw.githubusercontent.com/muthia11/pos-api/main/pos-banner.png" alt="POS BFI Banner">
+    <div class="hero-overlay">
         <h2>POS BFI Finance</h2>
         <p>Temui Kami Lebih Dekat</p>
         <p style="font-size: 14px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 # ======== FORM INPUT ALAMAT ========
