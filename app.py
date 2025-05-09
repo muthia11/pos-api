@@ -95,14 +95,20 @@ lat_param, lon_param = query_params.get("lat"), query_params.get("lon")
 lat = lon = None
 
 # Geocoding
+GOOGLE_API_KEY = "AIzaSyDHGJO3J1JIC7XeqnxPJaeLgxvhFf38wmI"
+
 def get_coordinates_from_address(alamat):
-    url = "https://nominatim.openstreetmap.org/search"
-    params = {"q": alamat, "format": "json", "limit": 1}
-    headers = {"User-Agent": "streamlit-pos-app"}
-    response = requests.get(url, params=params, headers=headers).json()
-    if response:
-        return float(response[0]['lat']), float(response[0]['lon'])
+    url = "https://maps.googleapis.com/maps/api/geocode/json"
+    params = {
+        "address": alamat,
+        "key": GOOGLE_API_KEY
+    }
+    response = requests.get(url, params=params).json()
+    if response["status"] == "OK":
+        location = response["results"][0]["geometry"]["location"]
+        return location["lat"], location["lng"]
     return None, None
+
 
 # Hitung lokasi terdekat
 if alamat_input:
