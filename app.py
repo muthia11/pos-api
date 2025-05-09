@@ -44,6 +44,45 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+.hero-banner {
+    position: relative;
+    background-image: url('https://github.com/muthia11/pos-api/blob/a9537d870b53a6b6923ac1594918a40ac0449619/pos-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    padding: 80px 20px 60px 20px;
+    text-align: center;
+    color: white;
+}
+.hero-banner h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.hero-banner p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.hero-banner-overlay {
+    background: rgba(0,0,0,0.4);
+    border-radius: 12px;
+    padding: 40px 20px;
+}
+</style>
+
+<div class="hero-banner">
+    <div class="hero-banner-overlay">
+        <h2>POS BFI Finance</h2>
+        <p>Temui Kami Lebih Dekat</p>
+        <p style="font-size: 14px; margin-top: 6px;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+
+
 # ======== LOGO & JUDUL ========
 # st.markdown("""
 #     <div style='text-align:center; margin-bottom: 10px;'>
@@ -57,26 +96,26 @@ st.markdown("""
 #     <p style='font-size: 18px; margin: 0 auto; max-width: 280px;'>Temui Kami Lebih Dekat</p>
 # </div>
 # """, unsafe_allow_html=True)
-with st.container():
-    st.markdown("""
-    <div style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 20px;
-        background-color: #F5F9FF;
-        border-radius: 12px;
-        margin-bottom: 24px;
-    ">
-        <div style="text-align: center;">
-            <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png'
-                 width='120' style="margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
-            <h2 style="color: #005BAC; margin-bottom: 10px; font-size: 30px; font-weight: bold;">POS BFI Finance</h2>
-            <p style="font-size: 18px; margin-bottom: 4px;">Temui Kami Lebih Dekat</p>
-            <p style="font-size: 14px; color: #444;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+# with st.container():
+#     st.markdown("""
+#     <div style="
+#         display: flex;
+#         flex-direction: column;
+#         align-items: center;
+#         padding: 40px 20px;
+#         background-color: #F5F9FF;
+#         border-radius: 12px;
+#         margin-bottom: 24px;
+#     ">
+#         <div style="text-align: center;">
+#             <img src='https://raw.githubusercontent.com/muthia11/pos-api/ae84f4667e53e93832cd41c2047753d4ca6984bd/bfi-logo.png'
+#                  width='120' style="margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
+#             <h2 style="color: #005BAC; margin-bottom: 10px; font-size: 30px; font-weight: bold;">POS BFI Finance</h2>
+#             <p style="font-size: 18px; margin-bottom: 4px;">Temui Kami Lebih Dekat</p>
+#             <p style="font-size: 14px; color: #444;">Akses layanan pembiayaan BPKB dengan cepat dan mudah</p>
+#         </div>
+#     </div>
+#     """, unsafe_allow_html=True)
 
     with st.form("form_alamat"):
         st.markdown("**Masukkan alamat Anda**")
